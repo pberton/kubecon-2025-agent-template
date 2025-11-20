@@ -66,7 +66,7 @@ git clone https://github.com/omnistrate-community/kubecon-2025-agent-template
 cd kubecon-2025-agent-template
 ```
 
-### Step 2: Integrate w/ your favor AI Copilot platform
+### Step 2: Integrate w/ your favorite AI Copilot platform
 
 - Leverage the Omnistrate FDE skill to iterate on your service with your Copilot tool (e.g., GitHub Copilot, Claude Code, etc.)
 - See: https://docs.omnistrate.com/getting-started/overview/#setup-your-ai-agent for detailed instructions.
