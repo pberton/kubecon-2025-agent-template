@@ -59,10 +59,6 @@ Transform your agentic AI service into a globally distributed SaaS offering in m
    - Create an API key
    - Save it securely
 
-5. **Integrate w/ your favor AI Copilot platform**
-    - Leverage the Omnistrate FDE skill to iterate on your service with your Copilot tool (e.g., GitHub Copilot, Claude Code, etc.)
-    - See: https://docs.omnistrate.com/getting-started/overview/#setup-your-ai-agent for detailed instructions.
-
 ### Step 1: Clone This Template
 
 ```bash
@@ -70,7 +66,12 @@ git clone https://github.com/omnistrate-community/kubecon-2025-agent-template
 cd kubecon-2025-agent-template
 ```
 
-### Step 2: Create Omnistrate Secret
+### Step 2: Integrate w/ your favor AI Copilot platform
+
+- Leverage the Omnistrate FDE skill to iterate on your service with your Copilot tool (e.g., GitHub Copilot, Claude Code, etc.)
+- See: https://docs.omnistrate.com/getting-started/overview/#setup-your-ai-agent for detailed instructions.
+
+### Step 3: Create Omnistrate Secret
 
 Store your Claude API key securely:
 
@@ -78,7 +79,7 @@ Store your Claude API key securely:
 omctl secret set DEV CLAUDE_KEY "your-anthropic-api-key-here"
 ```
 
-### Step 3: Build Your PaaS on Omnistrate
+### Step 4: Build Your PaaS on Omnistrate
 
 ```bash
 omctl build --file compose-omnistrate.yaml --product-name "Agent Platform" --release-as-preferred
@@ -90,7 +91,7 @@ This command:
 - Sets up HTTPS with automatic TLS
 - Sets up a self-serve customer portal
 
-### Step 4: Access your self-serve customer portal
+### Step 5: Access your self-serve customer portal
 
 Wait for customer portal deployment to finish 
 ```bash
@@ -103,7 +104,7 @@ omctl service describe "Agent Platform" --output json | jq -r '. as $root | .ser
 
 Use your Omnistrate email and password to test your PaaS service as a customer. We automatically enable internal users as customers for pre-prod environments.
 
-### Step 5: Deploy an instance of your application in the Dev Environment
+### Step 6: Deploy an instance of your application in the Dev Environment
 
 You can use UI or use the CLI commands below to create instances:
 
@@ -145,7 +146,7 @@ omctl instance create \
   --wait
 ```
 
-### Step 6: Get your application's HTTPS Endpoint
+### Step 7: Get your application's HTTPS Endpoint
 
 ```bash
 omctl instance list-endpoints <your-instance-id>
@@ -156,7 +157,7 @@ You'll get an HTTPS endpoint like:
 https://agent-api.instance-xyz.hc-abc.us-east-2.aws.f2e0a955bb84.cloud
 ```
 
-### Step 7: Test Your Agent Platform
+### Step 8: Test Your Agent Platform
 
 ```bash
 # Health check
@@ -173,7 +174,7 @@ curl -X POST https://your-endpoint/api/v1/agent/execute \
   }'
 ```
 
-### Step 8: Make changes to the agent and publish new images
+### Step 9: Make changes to the agent and publish new images
 
 ```bash
 cd agent-api && docker build --platform linux/amd64 -t <custom-image-repo>/agent-runtime:v1.x --load .
